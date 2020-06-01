@@ -24,6 +24,5 @@ public:
     }
 };
 extern "C" BOOST_SYMBOL_EXPORT AnimationComponentPlugin plugin;
-extern "C" BOOST_SYMBOL_EXPORT AnimationComponent baggage;
 AnimationComponentPlugin plugin;
 }

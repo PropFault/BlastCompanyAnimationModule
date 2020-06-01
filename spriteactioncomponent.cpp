@@ -64,7 +64,6 @@ void SpriteActionComponent::onActionStart()
 
 void SpriteActionComponent::onActionUpdate(float playheadPosition, float relativePlayheadPosition)
 {
-    std::cout<<"onActionUpdate with playhead@"<<playheadPosition<<" and relPlayhead@"<<relativePlayheadPosition<<std::endl;
     this->index = (int)round(relativePlayheadPosition*(this->textures.size()-1));
 }
 
@@ -84,6 +83,5 @@ SpriteActionComponent::~SpriteActionComponent()
 
 SDL_Texture *SpriteActionComponent::getSDLTexture() const
 {
-    std::cout<<"Called getSDLTexture on SpriteActionComponent with index " << index << std::endl;
     return this->textures.at(index);
 }

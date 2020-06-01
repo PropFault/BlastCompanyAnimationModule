@@ -16,5 +16,5 @@ conan_add_remote(NAME bincrafters INDEX 1
             URL https://api.bintray.com/conan/bincrafters/public-conan)
 conan_cmake_run(REQUIRES sdl2/2.0.10@bincrafters/stable  zlib/1.2.9@conan/stable  libpng/1.6.37@bincrafters/stable  libtiff/4.0.9@bincrafters/stable   spdlog/1.3.1@bincrafters/stable   Catch2/2.11.1@catchorg/stable  sdl2_image/2.0.5@bincrafters/stable  nlohmann_json/3.7.3  boost_dll/1.69.0@bincrafters/stable boost_filesystem/1.69.0@bincrafters/stable BASIC_SETUP BUILD missing)
 set(CMAKE_CXX_FLAGS_DEBUG, "-g")
-add_library(${PROJECT_NAME} SHARED "main.cpp" "actioncomponent.cpp" "spriteactioncomponent.cpp" "animationcomponent.cpp" "animationsystem.cpp")
+add_library(${PROJECT_NAME} SHARED "main.cpp" "actioncomponent.cpp" "spriteactioncomponent.cpp" "animationcomponent.cpp" "animationsystem.cpp" "spawneractioncomponent.cpp")
 target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})

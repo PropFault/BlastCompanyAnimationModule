@@ -11,6 +11,7 @@ class AnimationComponent : public Component, public Texture
 {
 private:
     bool isPlaying;
+    bool loops;
     float duration;
     float playhead;
     Component::CID displayedAction;
@@ -20,6 +21,7 @@ public:
     static const std::string INIT_PARAM_ACTIONS;
     static const std::string INIT_PARAM_DISPLAYED_ACTION;
     static const std::string INIT_PARAM_DURATION;
+    static const std::string INIT_PARAM_LOOPS;
     AnimationComponent(const EntityComponentManager& ecm);
     bool getIsPlaying() const;
     void setIsPlaying(bool value);
@@ -40,6 +42,8 @@ protected:
 public:
     Component *clone();
     std::vector<Component::CID> getActions() const;
+    bool getLoops() const;
+    void setLoops(bool value);
 };
 
 #endif // ANIMATIONCOMPONENT_H
