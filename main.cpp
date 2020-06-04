@@ -5,6 +5,9 @@
 #include <boost/config.hpp>
 #include <iostream>
 #include "spriteactioncomponent.h"
+#include "callbackactioncomponent.h"
+#include "../BlastCompany/functionmanager.h"
+#include "../BlastCompany/context.h"
 using namespace std;
 
 namespace plugins {
@@ -14,10 +17,12 @@ public:
 
     // ComponentPlugin interface
 public:
-    void onRegisterComponents(const Window &window, const SDLRenderer &renderer, EntityComponentManager &ecm){
+    void onRegisterComponents(const Context &context){
         std::cout<<"onRegisterComponent"<<std::endl;
-        ecm.registerBlueprint(new SpriteActionComponent(renderer.getSdlRenderer()));
-        ecm.registerBlueprint(new AnimationComponent(ecm));
+        EntityComponentManager &ecm = context.getEcm();
+        ecm.registerBlueprint(new SpriteActionComponent(context.getResourceLoader()));
+        ecm.registerBlueprint(new AnimationComponent(context.getEcm()));
+        ecm.registerBlueprint(new CallbackActionComponent(context.getFuncMan()));
     }
     void onRegisterSystems(SystemPipeline &pipeline){
         pipeline.add(new AnimationSystem());

@@ -5,15 +5,16 @@
 #include <SDL2/SDL.h>
 #include <vector>
 #include "../BlastCompany/texture.h"
+#include "../BlastCompany/resourceloader.h"
 
 class SpriteActionComponent : public ActionComponent,public Texture
 {
 private:
-    SDL_Renderer *renderer;
+    ResourceLoader &resourceLoader;
     std::vector<SDL_Texture*> textures;
     int index;
 public:
-    SpriteActionComponent(SDL_Renderer *renderer);
+    SpriteActionComponent(ResourceLoader &resourceLoader);
     // Component interface
 private:
     void _init(nlohmann::json json);

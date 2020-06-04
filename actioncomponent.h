@@ -13,7 +13,7 @@ public:
     static const std::string INIT_PARAM_START_POINT;
     static const std::string INIT_PARAM_STOP_POINT;
 
-    ActionComponent(const std::string &componentName, float startPoint, float endPoint);
+    ActionComponent(const std::string &componentName);
     float getStartPoint() const;
     void setStartPoint(float value);
     float getEndPoint() const;

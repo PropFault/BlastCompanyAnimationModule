@@ -36,17 +36,18 @@ void AnimationSystem::think(EntityComponentManager &ecs, const std::unordered_se
             }else{
                 for(Component::CID actionComp : animComponent->getActions()){
                     ActionComponent *action = ecs.lookupCID<ActionComponent>(actionComp);
-                    if(action->getHasBeenStarted() == false && action->getStartPoint() <= playhead && action->getEndPoint() >= playhead)
+//                    std::cout<<"HAS BEEN STARTED " << action->getHasBeenStarted() << " HAS BEEN ENDED " << action ->getHasBeenEnded() << std::endl;
+                    if(action->getHasBeenStarted() == false && action->getStartPoint() <= playhead)
                     {
-      //                  std::cout<<"CALLING START ON ACTION"<<std::endl;
+
                         action->onActionStart();
                         action->setHasBeenStarted(true);
                         action->setHasBeenEnded(false);
                     }
-                    if(action->getStartPoint() < playhead && action->getEndPoint() > playhead)
+                    if(action->getStartPoint() < playhead && action->getEndPoint() > playhead){
                         action->onActionUpdate(playhead, (playhead - action->getStartPoint()) / (action->getEndPoint() - action->getStartPoint()));
+                    }
                     if(action->getHasBeenEnded() == false && action->getEndPoint() < playhead){
-       //                 std::cout<<"CALLING END ON ACTION"<<std::endl;
                         action->onActionEnd();
                         action->setHasBeenEnded(true);
                         action->setHasBeenStarted(false);

@@ -56,7 +56,7 @@ void ActionComponent::setHasBeenEnded(bool value)
     hasBeenEnded = value;
 }
 
-ActionComponent::ActionComponent(const std::string &componentName, float startPoint, float endPoint)
-    :Component (componentName), startPoint(startPoint), endPoint(endPoint), hasBeenStarted(false), hasBeenEnded(false)
+ActionComponent::ActionComponent(const std::string &componentName)
+    :Component (componentName), startPoint(-1.0), endPoint(-1.0), hasBeenStarted(false), hasBeenEnded(false)
 {}
 
