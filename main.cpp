@@ -17,16 +17,17 @@ public:
 
     // ComponentPlugin interface
 public:
-    void onRegisterComponents(const Context &context){
+    void onRegisterComponents(const Context &context) override{
         std::cout<<"onRegisterComponent"<<std::endl;
         EntityComponentManager &ecm = context.getEcm();
         ecm.registerBlueprint(new SpriteActionComponent(context.getResourceLoader()));
         ecm.registerBlueprint(new AnimationComponent(context.getEcm()));
         ecm.registerBlueprint(new CallbackActionComponent(context.getFuncMan()));
     }
-    void onRegisterSystems(SystemPipeline &pipeline){
+    void onRegisterSystems(SystemPipeline &pipeline, const Context &context) override{
         pipeline.add(new AnimationSystem());
     }
+
 };
 extern "C" BOOST_SYMBOL_EXPORT AnimationComponentPlugin plugin;
 AnimationComponentPlugin plugin;
